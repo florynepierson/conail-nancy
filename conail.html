@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Conail — Onglerie & Beauté · Nancy</title>
+  <meta name="description" content="Conail, salon de nail art et beauté à Nancy. Pose d'ongles, extensions, nail art, extensions de cils. 9 Place de la Croix de Bourgogne, Nancy."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black:   #0a0808;
+      --charcoal:#141010;
+      --dark:    #1c1818;
+      --rose:    #e8b4b8;
+      --rose-deep:#c4797f;
+      --gold:    #c9a96e;
+      --cream:   #f5ede8;
+      --muted:   #7a6a6a;
+      --white:   #fdf8f5;
+      --green-wa:#25D366;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem; height: 70px;
+      background: rgba(10,8,8,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201,169,110,0.15);
+      transition: all 0.3s;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; font-weight: 700;
+      color: var(--white); text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-logo span { color: var(--rose); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { color: rgba(245,237,232,0.6); text-decoration: none; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--rose); }
+    .nav-rdv { background: var(--rose-deep) !important; color: var(--white) !important; padding: 0.5rem 1.4rem; border-radius: 2px; font-weight: 500 !important; transition: background 0.2s !important; }
+    .nav-rdv:hover { background: var(--rose) !important; color: var(--black) !important; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh; padding-top: 70px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(232,180,184,0.07), transparent);
+      pointer-events: none;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 5rem 4rem 5rem 5rem; position: relative; z-index: 1;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      color: var(--gold); font-size: 0.75rem; letter-spacing: 0.2em;
+      text-transform: uppercase; margin-bottom: 2rem;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-tag::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      font-weight: 900; line-height: 1.0;
+      color: var(--white);
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+    .hero-title em { font-style: italic; color: var(--rose); display: block; }
+    .hero-sub {
+      margin-top: 1.8rem; font-size: 0.95rem; color: rgba(245,237,232,0.65);
+      line-height: 1.85; max-width: 400px;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .hero-rating {
+      margin-top: 2.2rem;
+      display: inline-flex; align-items: center; gap: 1rem;
+      border: 1px solid rgba(201,169,110,0.25); padding: 0.8rem 1.4rem;
+      width: fit-content;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .hero-rating .stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; }
+    .hero-rating p { font-size: 0.82rem; color: rgba(245,237,232,0.7); }
+    .hero-rating p strong { color: var(--white); }
+    .hero-btns {
+      margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+    .btn-primary {
+      background: var(--rose-deep); color: var(--white);
+      padding: 0.95rem 2.2rem; text-decoration: none;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      transition: all 0.25s; border: 2px solid var(--rose-deep);
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-primary:hover { background: transparent; color: var(--rose); border-color: var(--rose); }
+    .btn-wa {
+      background: var(--green-wa); color: #fff;
+      padding: 0.95rem 2rem; text-decoration: none;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+      border: 2px solid var(--green-wa); transition: all 0.25s;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+    }
+    .btn-wa:hover { background: transparent; color: var(--green-wa); }
+    .btn-insta {
+      background: transparent; color: var(--rose);
+      padding: 0.95rem 2rem; text-decoration: none;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+      border: 2px solid rgba(232,180,184,0.35); transition: all 0.25s;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+    }
+    .btn-insta:hover { border-color: var(--rose); background: rgba(232,180,184,0.08); }
+
+    .hero-right { position: relative; overflow: hidden; }
+    .hero-grid {
+      position: absolute; inset: 0;
+      display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 2px;
+    }
+    .hero-grid img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.6s; }
+    .hero-grid img:hover { transform: scale(1.04); }
+    .hero-grid .tall { grid-row: 1/3; }
+    .hero-overlay-badge {
+      position: absolute; bottom: 2rem; left: 2rem;
+      background: rgba(10,8,8,0.85); backdrop-filter: blur(8px);
+      border: 1px solid rgba(201,169,110,0.3);
+      padding: 1.2rem 1.6rem;
+    }
+    .hero-overlay-badge .big {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 900; color: var(--rose); line-height: 1;
+    }
+    .hero-overlay-badge p { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-top: 0.3rem; }
+
+    /* ── STRIP ── */
+    .strip {
+      background: var(--rose-deep);
+      padding: 1rem 0; overflow: hidden;
+      display: flex; align-items: center;
+    }
+    .strip-inner {
+      display: flex; gap: 3rem; white-space: nowrap;
+      animation: marquee 18s linear infinite;
+    }
+    .strip-inner span {
+      font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(255,255,255,0.85); display: flex; align-items: center; gap: 1.5rem;
+    }
+    .strip-inner span::after { content: '✦'; color: rgba(255,255,255,0.4); }
+    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* ── SECTIONS ── */
+    section { padding: 7rem 5rem; }
+    .s-label {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .s-label::before { content:''; width:24px; height:1px; background:var(--gold); }
+    .s-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 700; line-height: 1.15; color: var(--white);
+    }
+    .s-title em { font-style: italic; color: var(--rose); }
+
+    /* ── SERVICES ── */
+    #services { background: var(--charcoal); }
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; margin-top: 4rem; background: rgba(201,169,110,0.1); }
+    .service-card {
+      background: var(--charcoal); padding: 2.8rem 2.2rem;
+      border: 1px solid transparent;
+      transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--rose-deep), var(--gold));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { background: var(--dark); }
+    .service-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem; font-weight: 900;
+      color: rgba(201,169,110,0.12); line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 700; color: var(--white); margin-bottom: 0.8rem;
+    }
+    .service-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.8; }
+    .service-icon { font-size: 1.6rem; margin-bottom: 1rem; display: block; }
+
+    /* ── GALERIE ── */
+    #galerie { background: var(--black); padding: 7rem 0; }
+    #galerie .inner { padding: 0 5rem; margin-bottom: 3rem; }
+    .galerie-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3px;
+    }
+    .galerie-grid div { overflow: hidden; aspect-ratio: 3/4; }
+    .galerie-grid img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.6s ease; display: block; }
+    .galerie-grid div:hover img { transform: scale(1.06); }
+    .galerie-grid .wide { grid-column: span 2; aspect-ratio: 16/9; }
+
+    /* ── INSTAGRAM ── */
+    #instagram { background: var(--charcoal); }
+    .insta-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem; }
+    .insta-handle {
+      display: inline-flex; align-items: center; gap: 0.8rem;
+      color: var(--rose); text-decoration: none;
+      font-size: 1rem; font-weight: 400; letter-spacing: 0.05em;
+      border: 1px solid rgba(232,180,184,0.3); padding: 0.6rem 1.2rem;
+      transition: all 0.2s;
+    }
+    .insta-handle:hover { background: rgba(232,180,184,0.08); border-color: var(--rose); }
+    .insta-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 3px; }
+    .insta-item { position: relative; aspect-ratio: 1; overflow: hidden; }
+    .insta-item img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.5s; }
+    .insta-item:hover img { transform: scale(1.08); }
+    .insta-item .overlay {
+      position: absolute; inset: 0;
+      background: rgba(10,8,8,0.6);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .insta-item:hover .overlay { opacity: 1; }
+    .insta-item .overlay svg { width: 32px; height: 32px; fill: white; }
+    .insta-cta { margin-top: 2.5rem; text-align: center; }
+
+    /* ── AVIS ── */
+    #avis { background: var(--dark); }
+    .avis-score-bar {
+      display: flex; align-items: center; gap: 2rem;
+      background: var(--charcoal); padding: 2rem 2.5rem;
+      border: 1px solid rgba(201,169,110,0.15); margin-bottom: 3rem;
+      flex-wrap: wrap; gap: 2rem;
+    }
+    .avis-big {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem; font-weight: 900; color: var(--rose); line-height: 1;
+    }
+    .avis-details .stars { color: var(--gold); font-size: 1.1rem; letter-spacing: 2px; }
+    .avis-details p { font-size: 0.82rem; color: var(--muted); margin-top: 0.3rem; }
+    .avis-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .avis-card {
+      background: var(--charcoal); padding: 2rem;
+      border: 1px solid rgba(201,169,110,0.1);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .avis-card:hover { border-color: rgba(232,180,184,0.3); transform: translateY(-3px); }
+    .avis-card .top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+    .avis-card .stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 1px; }
+    .avis-card p { font-size: 0.86rem; color: rgba(245,237,232,0.65); line-height: 1.8; font-style: italic; }
+    .avis-card .author { margin-top: 1.2rem; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); font-style: normal; }
+    .google-link { margin-top: 2.5rem; display: flex; justify-content: center; }
+    .btn-outline-gold {
+      display: inline-flex; align-items: center; gap: 0.8rem;
+      color: var(--gold); border: 1px solid rgba(201,169,110,0.4);
+      padding: 0.8rem 2rem; text-decoration: none;
+      font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase;
+      transition: all 0.2s;
+    }
+    .btn-outline-gold:hover { background: rgba(201,169,110,0.1); border-color: var(--gold); }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--black); display: grid; grid-template-columns: 1fr 1fr; padding: 0; }
+    .contact-left { padding: 7rem 4rem 7rem 5rem; }
+    .contact-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 2rem; }
+    .c-item { display: flex; align-items: flex-start; gap: 1.2rem; }
+    .c-icon {
+      width: 44px; height: 44px; min-width: 44px;
+      border: 1px solid rgba(201,169,110,0.25);
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+    }
+    .c-txt .lbl { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+    .c-txt a, .c-txt p { color: var(--cream); text-decoration: none; font-size: 0.92rem; line-height: 1.6; transition: color 0.2s; }
+    .c-txt a:hover { color: var(--rose); }
+    .horaires { margin-top: 2.5rem; border: 1px solid rgba(201,169,110,0.15); padding: 1.6rem; }
+    .horaires h4 { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+    .h-row { display: flex; justify-content: space-between; font-size: 0.84rem; padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); color: rgba(245,237,232,0.7); }
+    .h-row:last-child { border: none; }
+    .h-row .closed { color: rgba(245,237,232,0.25); }
+    .h-row .special { color: var(--rose); font-size: 0.78rem; }
+    .contact-btns { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem; }
+    .btn-rose { display: flex; align-items: center; justify-content: center; gap: 0.7rem; background: var(--rose-deep); color: #fff; padding: 1rem; text-decoration: none; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; transition: all 0.25s; border: 2px solid var(--rose-deep); }
+    .btn-rose:hover { background: transparent; color: var(--rose); border-color: var(--rose); }
+    .btn-wa-full { display: flex; align-items: center; justify-content: center; gap: 0.7rem; background: var(--green-wa); color: #fff; padding: 1rem; text-decoration: none; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; transition: all 0.25s; border: 2px solid var(--green-wa); }
+    .btn-wa-full:hover { background: transparent; color: var(--green-wa); }
+    .contact-right { position: relative; }
+    .contact-right iframe { width: 100%; height: 100%; border: none; min-height: 500px; filter: grayscale(80%) invert(90%) sepia(10%); }
+    .map-bar { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(10,8,8,0.9); padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.8rem; border-top: 1px solid rgba(201,169,110,0.2); }
+    .map-bar p { font-size: 0.82rem; color: var(--cream); }
+    .map-bar a { margin-left: auto; color: var(--gold); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(201,169,110,0.4); padding: 0.35rem 0.9rem; transition: all 0.2s; white-space: nowrap; }
+    .map-bar a:hover { background: rgba(201,169,110,0.1); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      border-top: 1px solid rgba(201,169,110,0.15);
+      padding: 3rem 5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 1.5rem; flex-wrap: wrap;
+    }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--white); }
+    .footer-logo span { color: var(--rose); }
+    footer p { font-size: 0.78rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--rose); }
+
+    /* ── WA FLOAT ── */
+    .wa-float {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+      background: var(--green-wa); color: #fff;
+      width: 58px; height: 58px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: all 0.3s; animation: pulse-wa 2.5s infinite;
+    }
+    .wa-float:hover { transform: scale(1.1); }
+    @keyframes pulse-wa { 0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.4)}50%{box-shadow:0 4px 32px rgba(37,211,102,0.65)} }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)} }
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1100px){
+      nav { padding:0 1.5rem; }
+      .nav-links { gap:1.2rem; }
+      section { padding:5rem 2.5rem; }
+      #hero { grid-template-columns:1fr; min-height:auto; }
+      .hero-left { padding:5rem 2.5rem 3.5rem; }
+      .hero-right { height:80vw; position:relative; }
+      .hero-grid { position:absolute; inset:0; }
+      .services-grid { grid-template-columns:1fr 1fr; }
+      .galerie-grid { grid-template-columns:1fr 1fr; }
+      .galerie-grid .wide { grid-column:span 2; aspect-ratio:16/9; }
+      .insta-grid { grid-template-columns:repeat(2,1fr); }
+      .avis-grid { grid-template-columns:1fr; }
+      #contact { grid-template-columns:1fr; }
+      .contact-left { padding:5rem 2.5rem; }
+      .contact-right iframe { min-height:350px; }
+      footer { flex-direction:column; text-align:center; }
+      .footer-links { justify-content:center; }
+    }
+    @media(max-width:640px){
+      .nav-links { display:none; }
+      .services-grid { grid-template-columns:1fr; }
+      .galerie-grid { grid-template-columns:1fr 1fr; }
+      .galerie-grid .wide { grid-column:span 2; }
+      .insta-grid { grid-template-columns:repeat(2,1fr); }
+      .hero-btns { flex-direction:column; }
+      footer { padding:2.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="#hero">Co<span>nail</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Prestations</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+    <li><a href="#instagram">Instagram</a></li>
+    <li><a href="#avis">Avis</a></li>
+    <li><a href="#contact" class="nav-rdv">Nous trouver</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <span class="hero-tag">Onglerie & Beauté · Nancy</span>
+    <h1 class="hero-title">
+      L'art de
+      <em>sublimer</em>
+      vos ongles
+    </h1>
+    <p class="hero-sub">Pose, nail art, extensions de cils — un moment rien que pour vous. Conail, votre salon de beauté au cœur de Nancy.</p>
+    <div class="hero-rating">
+      <span class="stars">★★★★☆</span>
+      <p><strong>4,2 / 5</strong> · 121 avis Google</p>
+    </div>
+    <div class="hero-btns">
+      <a href="tel:0383271504" class="btn-primary">📞 &nbsp;03 83 27 15 04</a>
+      <a href="https://wa.me/33383271504" target="_blank" class="btn-wa" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a href="https://www.instagram.com/conailnancy" target="_blank" class="btn-insta" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram
+      </a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-grid">
+      <img class="tall" src="/mnt/user-data/uploads/622328106_18063561818634465_9092065925292900562_n_.jpg" alt="Nail art Conail Nancy" loading="eager"/>
+      <img src="/mnt/user-data/uploads/624698563_18121641553577753_5084853074615938378_n_.jpg" alt="Ongles roses" loading="eager"/>
+      <img src="/mnt/user-data/uploads/624843113_18095502365497052_7888534200465753464_n_.jpg" alt="Nail art rouge" loading="eager"/>
+    </div>
+    <div class="hero-overlay-badge">
+      <div class="big">121</div>
+      <p>Avis Google</p>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-inner">
+    <span>Pose d'ongles</span><span>Nail Art</span><span>Extensions de Cils</span>
+    <span>Vernis Semi-permanent</span><span>Remplissage</span><span>Manucure</span>
+    <span>Beauté & Bien-être</span><span>Nancy Centre</span>
+    <span>Pose d'ongles</span><span>Nail Art</span><span>Extensions de Cils</span>
+    <span>Vernis Semi-permanent</span><span>Remplissage</span><span>Manucure</span>
+    <span>Beauté & Bien-être</span><span>Nancy Centre</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="reveal">
+  <p class="s-label">Nos prestations</p>
+  <h2 class="s-title">Ce que nous <em>faisons pour vous</em></h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <span class="service-icon">💅</span>
+      <h3>Pose d'ongles</h3>
+      <p>Pose en gel, résine ou acrylique. Extensions avec capsules pour un résultat naturel et durable. French, nude, couleur — selon votre envie.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <span class="service-icon">🎨</span>
+      <h3>Nail Art</h3>
+      <p>Dégradés, chromés, motifs floraux, effet magnétique, baby boomer — notre équipe maîtrise toutes les techniques pour des ongles uniques.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <span class="service-icon">✨</span>
+      <h3>Vernis semi-permanent</h3>
+      <p>Une tenue longue durée jusqu'à 3-4 semaines, une finition brillante ou mate, avec une large gamme de couleurs tendance.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <span class="service-icon">🪄</span>
+      <h3>Remplissage</h3>
+      <p>Entretien de votre pose existante pour prolonger la tenue et garder vos ongles parfaits entre deux poses complètes.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <span class="service-icon">👁️</span>
+      <h3>Extensions de cils</h3>
+      <p>Volume, effet naturel ou dramatique — nos extensions de cils subliment votre regard pour un résultat longue durée.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <span class="service-icon">🌸</span>
+      <h3>Manucure & soin</h3>
+      <p>Soin des mains, cuticules, limage et vernissage. Un moment de détente pour prendre soin de vous de la tête aux pieds.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIE -->
+<section id="galerie" class="reveal">
+  <div class="inner">
+    <p class="s-label">Réalisations</p>
+    <h2 class="s-title">Notre <em>galerie</em></h2>
+  </div>
+  <div class="galerie-grid">
+    <div class="wide">
+      <img src="/mnt/user-data/uploads/650137609_18092799227016344_6181229429180486921_n_.jpg" alt="Ongles aqua nail art" loading="lazy"/>
+    </div>
+    <div>
+      <img src="/mnt/user-data/uploads/624698563_18121641553577753_5084853074615938378_n_.jpg" alt="Ongles roses baby boomer" loading="lazy"/>
+    </div>
+    <div>
+      <img src="/mnt/user-data/uploads/624843113_18095502365497052_7888534200465753464_n_.jpg" alt="Ongles rouges stiletto" loading="lazy"/>
+    </div>
+    <div>
+      <img src="/mnt/user-data/uploads/622328106_18063561818634465_9092065925292900562_n_.jpg" alt="Ongles chromés verts" loading="lazy"/>
+    </div>
+    <div>
+      <img src="/mnt/user-data/uploads/625886011_18141963088461969_6814496437419069898_n_.jpg" alt="Extensions de cils" loading="lazy"/>
+    </div>
+    <div>
+      <img src="/mnt/user-data/uploads/558175739_18079304474001232_9162289083787702000_n_.jpg" alt="Ongles naturels simple" loading="lazy"/>
+    </div>
+    <div>
+      <img src="/mnt/user-data/uploads/555311125_18106496014601577_153903332511794081_n_.jpg" alt="Nail art floral" loading="lazy"/>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section id="instagram" class="reveal">
+  <div class="insta-header">
+    <div>
+      <p class="s-label">Suivez-nous</p>
+      <h2 class="s-title">Notre <em>Instagram</em></h2>
+    </div>
+    <a href="https://www.instagram.com/conailnancy" target="_blank" class="insta-handle" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      @conailnancy
+    </a>
+  </div>
+  <div class="insta-grid">
+    <a href="https://www.instagram.com/conailnancy" target="_blank" class="insta-item" rel="noopener">
+      <img src="/mnt/user-data/uploads/558175739_18079304474001232_9162289083787702000_n_.jpg" alt="" loading="lazy"/>
+      <div class="overlay"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
+    </a>
+    <a href="https://www.instagram.com/conailnancy" target="_blank" class="insta-item" rel="noopener">
+      <img src="/mnt/user-data/uploads/555311125_18106496014601577_153903332511794081_n_.jpg" alt="" loading="lazy"/>
+      <div class="overlay"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
+    </a>
+    <a href="https://www.instagram.com/conailnancy" target="_blank" class="insta-item" rel="noopener">
+      <img src="/mnt/user-data/uploads/625886011_18141963088461969_6814496437419069898_n_.jpg" alt="" loading="lazy"/>
+      <div class="overlay"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
+    </a>
+    <a href="https://www.instagram.com/conailnancy" target="_blank" class="insta-item" rel="noopener">
+      <img src="/mnt/user-data/uploads/650137609_18092799227016344_6181229429180486921_n_.jpg" alt="" loading="lazy"/>
+      <div class="overlay"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
+    </a>
+  </div>
+  <div class="insta-cta">
+    <a href="https://www.instagram.com/conailnancy" target="_blank" class="btn-outline-gold" rel="noopener">
+      Voir tout sur Instagram →
+    </a>
+  </div>
+</section>
+
+<!-- AVIS -->
+<section id="avis" class="reveal">
+  <p class="s-label">Avis clients</p>
+  <h2 class="s-title">Ce qu'elles <em>disent</em></h2>
+  <div class="avis-score-bar">
+    <div class="avis-big">4,2</div>
+    <div class="avis-details">
+      <div class="stars">★★★★☆</div>
+      <p>121 avis Google vérifiés</p>
+    </div>
+    <div style="margin-left:auto; text-align:right;">
+      <a href="https://www.google.com/maps/place/Conail" target="_blank" class="btn-outline-gold" rel="noopener">Voir tous les avis →</a>
+    </div>
+  </div>
+  <div class="avis-grid">
+    <div class="avis-card">
+      <div class="top"><div class="stars">★★★★★</div><svg width="20" height="20" viewBox="0 0 48 48" style="opacity:0.4"><path fill="#4285F4" d="M44.5 20H24v8.5h11.7C34.3 33.1 29.8 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l6-6C34.5 6.6 29.6 4.5 24 4.5 13.3 4.5 4.5 13.3 4.5 24S13.3 43.5 24 43.5c11.5 0 21.5-8.3 21.5-19.5 0-1.3-.1-2.7-.5-4z"/><path fill="#34A853" d="M6.3 14.7l7 5.1C15 16.1 19.2 13 24 13c3.1 0 5.8 1.1 7.9 3l6-6C34.5 6.6 29.6 4.5 24 4.5c-7.6 0-14.2 4.4-17.7 10.2z"/><path fill="#FBBC05" d="M24 43.5c5.6 0 10.6-2 14.4-5.3l-6.7-5.5C29.6 34.8 26.9 36 24 36c-5.7 0-10.2-2.8-11.7-7.4l-7 5.4C8.5 39.5 15.6 43.5 24 43.5z"/><path fill="#EA4335" d="M44.5 20H24v8.5h11.7c-.8 2.3-2.3 4.3-4.3 5.7l6.7 5.5C42.1 36.3 45.5 30.6 45.5 24c0-1.3-.1-2.7-.5-4z"/></svg></div>
+      <p>« J'ai pris rendez-vous pour des ongles en gel, le résultat est parfait. L'équipe est très accueillante et prend vraiment le temps d'écouter ce qu'on veut. Je reviendrai sans hésitation ! »</p>
+      <div class="author">Laura F. · Nancy</div>
+    </div>
+    <div class="avis-card">
+      <div class="top"><div class="stars">★★★★★</div><svg width="20" height="20" viewBox="0 0 48 48" style="opacity:0.4"><path fill="#4285F4" d="M44.5 20H24v8.5h11.7C34.3 33.1 29.8 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l6-6C34.5 6.6 29.6 4.5 24 4.5 13.3 4.5 4.5 13.3 4.5 24S13.3 43.5 24 43.5c11.5 0 21.5-8.3 21.5-19.5 0-1.3-.1-2.7-.5-4z"/><path fill="#34A853" d="M6.3 14.7l7 5.1C15 16.1 19.2 13 24 13c3.1 0 5.8 1.1 7.9 3l6-6C34.5 6.6 29.6 4.5 24 4.5c-7.6 0-14.2 4.4-17.7 10.2z"/><path fill="#FBBC05" d="M24 43.5c5.6 0 10.6-2 14.4-5.3l-6.7-5.5C29.6 34.8 26.9 36 24 36c-5.7 0-10.2-2.8-11.7-7.4l-7 5.4C8.5 39.5 15.6 43.5 24 43.5z"/><path fill="#EA4335" d="M44.5 20H24v8.5h11.7c-.8 2.3-2.3 4.3-4.3 5.7l6.7 5.5C42.1 36.3 45.5 30.6 45.5 24c0-1.3-.1-2.7-.5-4z"/></svg></div>
+      <p>« Toujours simple et toujours parfait chez Conail. Mes ongles tiennent plus d'un mois, le travail est minutieux. Je recommande à toutes mes amies. »</p>
+      <div class="author">lilie.vim · Cliente fidèle</div>
+    </div>
+    <div class="avis-card">
+      <div class="top"><div class="stars">★★★★★</div><svg width="20" height="20" viewBox="0 0 48 48" style="opacity:0.4"><path fill="#4285F4" d="M44.5 20H24v8.5h11.7C34.3 33.1 29.8 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l6-6C34.5 6.6 29.6 4.5 24 4.5 13.3 4.5 4.5 13.3 4.5 24S13.3 43.5 24 43.5c11.5 0 21.5-8.3 21.5-19.5 0-1.3-.1-2.7-.5-4z"/><path fill="#34A853" d="M6.3 14.7l7 5.1C15 16.1 19.2 13 24 13c3.1 0 5.8 1.1 7.9 3l6-6C34.5 6.6 29.6 4.5 24 4.5c-7.6 0-14.2 4.4-17.7 10.2z"/><path fill="#FBBC05" d="M24 43.5c5.6 0 10.6-2 14.4-5.3l-6.7-5.5C29.6 34.8 26.9 36 24 36c-5.7 0-10.2-2.8-11.7-7.4l-7 5.4C8.5 39.5 15.6 43.5 24 43.5z"/><path fill="#EA4335" d="M44.5 20H24v8.5h11.7c-.8 2.3-2.3 4.3-4.3 5.7l6.7 5.5C42.1 36.3 45.5 30.6 45.5 24c0-1.3-.1-2.7-.5-4z"/></svg></div>
+      <p>« Conail, c'est mon salon de confiance depuis 2 ans. Une équipe adorable et professionnelle — toujours satisfaite du résultat, que ce soit pour un simple nude ou un nail art élaboré. »</p>
+      <div class="author">Myriam J. · Cliente régulière</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-left reveal">
+    <p class="s-label">Nous trouver</p>
+    <h2 class="s-title">Venez nous <em>rendre visite</em></h2>
+    <div class="contact-list">
+      <div class="c-item">
+        <div class="c-icon">📍</div>
+        <div class="c-txt">
+          <div class="lbl">Adresse</div>
+          <p>9 Place de la Croix de Bourgogne<br>54000 Nancy</p>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">📞</div>
+        <div class="c-txt">
+          <div class="lbl">Téléphone</div>
+          <a href="tel:0383271504">03 83 27 15 04</a>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">📸</div>
+        <div class="c-txt">
+          <div class="lbl">Instagram</div>
+          <a href="https://www.instagram.com/conailnancy" target="_blank" rel="noopener">@conailnancy</a>
+        </div>
+      </div>
+    </div>
+    <div class="horaires">
+      <h4>Horaires d'ouverture</h4>
+      <div class="h-row"><span>Lundi</span><span>09:00 – 19:00</span></div>
+      <div class="h-row"><span>Mardi</span><span class="closed">Fermé</span></div>
+      <div class="h-row"><span>Mercredi</span><span>09:00 – 19:00</span></div>
+      <div class="h-row"><span>Jeudi</span><span class="special">09:00 – 21:00</span></div>
+      <div class="h-row"><span>Vendredi</span><span>09:00 – 19:00</span></div>
+      <div class="h-row"><span>Samedi</span><span>09:00 – 19:00</span></div>
+      <div class="h-row"><span>Dimanche</span><span class="closed">Fermé</span></div>
+    </div>
+    <div class="contact-btns">
+      <a href="tel:0383271504" class="btn-rose">📞 &nbsp;03 83 27 15 04</a>
+      <a href="https://wa.me/33383271504" target="_blank" class="btn-wa-full" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Écrire sur WhatsApp
+      </a>
+    </div>
+  </div>
+  <div class="contact-right">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2634.0797020233!2d6.171325299999999!3d48.684840799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479498775e460605%3A0xadae4812397be02!2sConail!5e0!3m2!1sfr!2sfr!4v1776149618675!5m2!1sfr!2sfr" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Conail Nancy"></iframe>
+    <div class="map-bar">
+      <span>📍</span>
+      <p>9 Pl. de la Croix de Bourgogne, 54000 Nancy</p>
+      <a href="https://www.google.com/maps/place/Conail" target="_blank" rel="noopener">Itinéraire →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Co<span>nail</span></div>
+  <p>© 2025 Conail · Onglerie & Beauté · Nancy</p>
+  <div class="footer-links">
+    <a href="tel:0383271504">03 83 27 15 04</a>
+    <a href="https://www.instagram.com/conailnancy" target="_blank" rel="noopener">Instagram</a>
+    <a href="#services">Prestations</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/33383271504" target="_blank" class="wa-float" rel="noopener" title="WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  const obs = new IntersectionObserver(
+    es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.07 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.style.borderBottomColor = window.scrollY > 50
+      ? 'rgba(201,169,110,0.25)' : 'rgba(201,169,110,0.15)';
+  });
+</script>
+</body>
+</html>
